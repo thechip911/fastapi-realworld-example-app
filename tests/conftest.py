@@ -50,9 +50,7 @@ def authorization_prefix() -> str:
     from app.core.config import get_app_settings
 
     settings = get_app_settings()
-    jwt_token_prefix = settings.jwt_token_prefix
-
-    return jwt_token_prefix
+    return settings.jwt_token_prefix
 
 
 @pytest.fixture

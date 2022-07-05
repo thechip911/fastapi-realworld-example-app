@@ -20,11 +20,7 @@ class TypedTable(Table):
         query_cls: Optional[Query] = None,
     ) -> None:
         if name is None:
-            if self.__table__:
-                name = self.__table__
-            else:
-                name = self.__class__.__name__
-
+            name = self.__table__ or self.__class__.__name__
         super().__init__(name, schema, alias, query_cls)
 
 
