@@ -376,13 +376,14 @@ async def test_article_will_contain_only_attached_tags(
         articles_repo = ArticlesRepository(connection)
 
         await articles_repo.create_article(
-            slug=f"test-slug",
+            slug="test-slug",
             title="tmp",
             description="tmp",
             body="tmp",
             author=test_user,
             tags=attached_tags,
         )
+
 
         for i in range(5):
             await articles_repo.create_article(
@@ -417,21 +418,23 @@ async def test_filtering_by_tags(
         articles_repo = ArticlesRepository(connection)
 
         await articles_repo.create_article(
-            slug=f"slug-1",
+            slug="slug-1",
             title="tmp",
             description="tmp",
             body="tmp",
             author=test_user,
             tags=["tag1", "tag2"],
         )
+
         await articles_repo.create_article(
-            slug=f"slug-2",
+            slug="slug-2",
             title="tmp",
             description="tmp",
             body="tmp",
             author=test_user,
             tags=["tag2"],
         )
+
 
         for i in range(5, 10):
             await articles_repo.create_article(
@@ -473,14 +476,29 @@ async def test_filtering_by_authors(
         )
 
         await articles_repo.create_article(
-            slug=f"slug-1", title="tmp", description="tmp", body="tmp", author=author1
+            slug="slug-1",
+            title="tmp",
+            description="tmp",
+            body="tmp",
+            author=author1,
         )
+
         await articles_repo.create_article(
-            slug=f"slug-2-1", title="tmp", description="tmp", body="tmp", author=author2
+            slug="slug-2-1",
+            title="tmp",
+            description="tmp",
+            body="tmp",
+            author=author2,
         )
+
         await articles_repo.create_article(
-            slug=f"slug-2-2", title="tmp", description="tmp", body="tmp", author=author2
+            slug="slug-2-2",
+            title="tmp",
+            description="tmp",
+            body="tmp",
+            author=author2,
         )
+
 
         for i in range(5, 10):
             await articles_repo.create_article(
@@ -521,11 +539,21 @@ async def test_filtering_by_favorited(
         )
 
         article1 = await articles_repo.create_article(
-            slug=f"slug-1", title="tmp", description="tmp", body="tmp", author=test_user
+            slug="slug-1",
+            title="tmp",
+            description="tmp",
+            body="tmp",
+            author=test_user,
         )
+
         article2 = await articles_repo.create_article(
-            slug=f"slug-2", title="tmp", description="tmp", body="tmp", author=test_user
+            slug="slug-2",
+            title="tmp",
+            description="tmp",
+            body="tmp",
+            author=test_user,
         )
+
 
         await articles_repo.add_article_into_favorites(article=article1, user=fan1)
         await articles_repo.add_article_into_favorites(article=article1, user=fan2)
